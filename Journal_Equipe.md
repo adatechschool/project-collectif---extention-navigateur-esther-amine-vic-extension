@@ -22,3 +22,10 @@ fait ajd:
 Demain : 
 point repartition de tach du groupe 
 definir ce qu'il ya réellement faire
+
+12/02/2022 
+fait aujourdhui : 
+- test et prise en main de l'API Giphy 
+- planification des tâches pour l'extention "animals gifs" 
+Pas eu le temps de faire beaucoup de choses car masterclass en remote le matin. 
+demain : commencer animals gifs : création manifest, bouton html/css, début du script 
