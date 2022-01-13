@@ -1,0 +1,10 @@
+{
+    "name": "AnimalsGifs",
+    "description" : "I highlight animals' names in a text and show you a cool gif about that specific animal",
+    "version": "1.0",
+    "manifest_version": 3,
+    "permissions": ["storage", "activeTab", "scripting"],
+    "action": {
+        "default_popup":"popup.html"
+    }
+}
