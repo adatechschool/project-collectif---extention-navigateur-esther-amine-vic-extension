@@ -29,3 +29,9 @@ fait aujourdhui :
 - planification des tâches pour l'extention "animals gifs" 
 Pas eu le temps de faire beaucoup de choses car masterclass en remote le matin. 
 demain : commencer animals gifs : création manifest, bouton html/css, début du script 
+
+13/02/2022
+fait aujourd'hui
+- réussi a faire surligner les mots clés et en cliant dessus une popup s'affiche 
+- bonne organisation a distance 
+demain : c'est vendrediiiii
