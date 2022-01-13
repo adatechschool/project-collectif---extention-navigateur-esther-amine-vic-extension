@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #popupcontent{
+ position: absolute;
+ visibility: hidden;
+ overflow: hidden;
+ border:1px solid #CCC;
+ background-color:#F9F9F9;
+ border:1px solid #333;
+ padding:5px;
+}
+      </style>
+    
+    <title>Document</title>
+</head>
+<body>
+    <div id="popupcontent">This is a popup window!</div>
+    <p id="paragraph">
+        Ce qu'il faut surtout retenir, c'est qu'entre le désert et l'oasis apparaît assez fréquemment un type intermédiaire, la steppe. Steppe à peu près permanente, quand elle doit son existence à la présence d'une nappe souterraine; steppe fort intermittente, quand elle dépend des pluies d'orage; dans tous lors cas, région de floraison soudaine, peuplée de plantes xérophytes : graminées courtes, dures touffes de drinn, buissons épineux de retem et d'acacia gommier, que le retour de la sécheresse semble plonger dans le néant, mais qui sont douées d'une étonnante vitalité et qui parviennent à sauver, à travers les longues épreuves de sécheresse, leurs racines ou leurs graines.
+La vie animale, comme la vie végétale, réussit à se maintenir dans un milieu qui ne s'y prête guère; mais, comme les plantes, les animaux sont absents des régions absolument désertiques tout au plus s'y réfugient-ils quand ils sont poursuivis. 
+</p>
+<p>
+oasis. Ils remédient à la rareté de l'eau et à la pénurie d'aliments qui en résulte soit par une grande mobilité (lièvre, gazelle, etc.), soit par des réserves analogues à celles des plantes (bosse du chameau, intestin de l'antilope adax), soit par de longs engourdissements dans le sol (lézards, serpents), dans tous les cas, par une exceptionnelle résistance.
+</p>
+
+    <script>
+
+ var liste = ["oasis", "gazelle"]
+ 
+ for (element of liste) {
+     highlight(element)
+ }
+
+function highlight(search) {
+  var paragraph = document.getElementsByTagName('p');
+
+  for (p of paragraph) {
+  search = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); //https://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+
+  var re = new RegExp(search, 'g');
+
+  p.innerHTML = p.innerHTML.replace(re, `<mark>$&</mark>`);
+  }
+}
+var popUp = document.getElementById("popupcontent");
+	   popUp.style.top = "30%";
+	   popUp.style.left = "50%";
+	   popUp.style.width = w + "px";
+	   popUp.style.height = h + "px";
+	   
+	     if (baseText == null) baseText = popUp.innerHTML;
+   popUp.innerHTML = baseText + 
+      "<div id=\"statusbar\"><button onclick=\"hidePopup();\">Close window<button></div>";
+ 
+ var baseText = null;
+ 
+ /*function showPopup(w,h){
+   var popUp = document.getElementById("popupcontent");
+ 
+   popUp.style.top = "200px";
+   popUp.style.left = "200px";
+   popUp.style.width = w + "px";
+   popUp.style.height = h + "px";
+ 
+  if (baseText == null) baseText = popUp.innerHTML;
+   popUp.innerHTML = baseText + 
+      "<div id=\"statusbar\"><button onclick=\"hidePopup();\">Close window<button></div>";
+ 
+  var sbar = document.getElementById("statusbar");
+   sbar.style.marginTop = (parseInt(h)-40) + "px";
+   popUp.style.visibility = "visible";
+}
+
+function hidePopup(){
+   var popUp = document.getElementById("popupcontent");
+   popUp.style.visibility = "hidden";
+}
+<a href="#" onclick="showPopup(300,200);" >Open popup</a> */
+    </script>
+</body>
+</html>
