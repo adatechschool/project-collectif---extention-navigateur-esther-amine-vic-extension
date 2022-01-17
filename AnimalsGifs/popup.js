@@ -29,7 +29,7 @@ function main() {
 
       var re = new RegExp(search, "g");
 
-      p.innerHTML = p.innerHTML.replace(re, `<mark>$&</mark>`);
+      p.innerHTML = p.innerHTML.replace(re, `<mark class="animal">$&</mark>`);
     }
   }
 }
