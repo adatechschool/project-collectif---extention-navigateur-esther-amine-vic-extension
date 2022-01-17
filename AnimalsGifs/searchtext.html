@@ -66,8 +66,8 @@ for (anim of animals) {
 
 function showPopup(element) { 
    var popup = document.createElement("div")
-   var gif = getGif
- // var gif = document.createElement("img")
+   var gif = document.cretElement("img")
+   gif.id = element.innerText + element.id
     element.appendChild(popup)
     popup.appendChild(gif)
     element.style.position = "relative"
@@ -81,14 +81,15 @@ function showPopup(element) {
     popup.appendChild(gif)
     console.log(gif.id)*/
     console.log(gif.id)
+     getGif(gif.id)
  
 
 }
 
 
-function getGif() {
+function getGif(index) {
  
-   // var searchterm = "dog";
+   var searchterm = "dog";
 
     var gifurl = "https://api.giphy.com/v1/gifs/search?api_key=lNEB9ueK0HjLAyPTh0pTfO6hAfRb09Sx&q=" + searchterm + "&limit=1&offset=0&rating=g&lang=en"
  
@@ -107,10 +108,10 @@ function getGif() {
 var callBackGetSuccess = function(d) {
     console.log("donnees api", d)
     //alert("Meteo temp  : "  + data.main.temp);
-   var img = document.getElementById("gif");
+   //var img = document.getElementById("gif");
    console.log("sub", d.data[0])
     console.log("sub", d.data[0])
-    img.src = d.data[0].img.original.url;
+   return d.data[0].img.original.url;
 }
    
 /* 
