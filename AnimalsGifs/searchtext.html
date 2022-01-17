@@ -28,14 +28,18 @@ La vie animale, comme la vie végétale, réussit à se maintenir dans un milieu
 oasis. Ils remédient à la rareté de l'eau et à la pénurie d'aliments qui en résulte soit par une grande mobilité (lièvre, gazelle, etc.), soit par des réserves analogues à celles des plantes (bosse du chameau, intestin de l'antilope adax), soit par de longs engourdissements dans le sol (lézards, serpents), dans tous les cas, par une exceptionnelle résistance.
 </p>
     <script>
- var liste = ["oasis", "gazelle"]
- 
+ var liste = ["oasis", "gazelle"] // a modifier pour inclure liste d'animaux 
+
+// on boucle sur la liste pour highlight chaque mot trouve dans la page
  for (element of liste) {
      highlight(element)
  }
 
+// permet de mettre en evidence les mots trouvés dans la page 
 function highlight(search) {
   var paragraph = document.getElementsByTagName('p');
+ // on boucle sur tous les paragraphes de la page pour y chercher 
+// le terme et le remplacer par lui-même entouré de balises <mark></mark>
   for (p of paragraph) {
   search = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); //https://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
   var re = new RegExp(search, 'g');
@@ -43,6 +47,7 @@ function highlight(search) {
   }
 }
 
+// on boucle sur chaque mot surligné pour lui ajouter un ID et un event listener 
 var animals = document.getElementsByClassName("animal")
 let i = 0
 
