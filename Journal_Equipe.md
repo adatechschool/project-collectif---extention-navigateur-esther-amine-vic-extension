@@ -12,7 +12,7 @@ Demain :
 - commencer extension images   
 
 
-11/02/2022
+11/01/2022
 fait ajd:
 - ajout fonction change police 
 - fais extension image 
@@ -23,15 +23,21 @@ Demain :
 point repartition de tach du groupe 
 definir ce qu'il ya réellement faire
 
-12/02/2022 
+12/01/2022 
 fait aujourdhui : 
 - test et prise en main de l'API Giphy 
 - planification des tâches pour l'extention "animals gifs" 
 Pas eu le temps de faire beaucoup de choses car masterclass en remote le matin. 
 demain : commencer animals gifs : création manifest, bouton html/css, début du script 
 
-13/02/2022
+13/01/2022
 fait aujourd'hui
 - réussi a faire surligner les mots clés et en cliant dessus une popup s'affiche 
 - bonne organisation a distance 
 demain : c'est vendrediiiii
+
+
+17/01/2022
+-Hard stuck on gif add-on : On arrive pas a fairee remonter l'id de la gif dans la fonction popup
+-la nuit portee conseil
+demain
