@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        #popupcontent{
+      /*   #popupcontent{
  position: absolute;
  visibility: hidden;
  overflow: hidden;
@@ -13,7 +13,10 @@
  background-color:#F9F9F9;
  border:1px solid #333;
  padding:5px;
-}
+ 
+} */
+
+
       </style>
     
     <title>Document</title>
@@ -54,27 +57,42 @@ let i = 0
 for (anim of animals) {
     anim.id = i.toString();
     let currEl = document.getElementById(i.toString())
-    currEl.addEventListener("click", () => {transformText(currEl)})
+    currEl.addEventListener("click", () => {showPopup(currEl)})
     i++;
 }
 
+
+function showPopup(element) { 
+    var popup = document.createElement("div")
+    element.appendChild(popup)
+    element.style.position = "relative"
+    popup.style.position = "absolute"
+    popup.style.top = "5px"
+    popup.style.left = "5px"
+    popup.style.height = "200px"
+    popup.style.width = "200px"
+    popup.style.border = "2px solid black"
+
+}
+   
+/* 
 function transformText(text) {
     text.innerHTML = "PLOUF"
-}
+} */
 
-/* var popUp = document.getElementById("popupcontent");
+ /* var popUp = document.getElementById("popupcontent");
        popUp.style.top = "30%";
        popUp.style.left = "50%";
-/*        popUp.style.width = w + "px";
-       popUp.style.height = h + "px"; */
+        popUp.style.width = w + "px";
+       popUp.style.height = h + "px"; 
        
-/* if (baseText == null) baseText = popUp.innerHTML;
+ if (baseText == null) baseText = popUp.innerHTML;
    popUp.innerHTML = baseText + 
       "<div id=\"statusbar\"><button onclick=\"hidePopup();\">Close window<button></div>";
  
- var baseText = null; */ 
+ var baseText = null;
  
- /*function showPopup(w,h){
+ function showPopup(w,h){
    var popUp = document.getElementById("popupcontent");
  
    popUp.style.top = "200px";
@@ -94,7 +112,7 @@ function hidePopup(){
    var popUp = document.getElementById("popupcontent");
    popUp.style.visibility = "hidden";
 }
-<a href="#" onclick="showPopup(300,200);" >Open popup</a> */
+<a href="#" onclick="showPopup(300,200);" >Open popup</a>  */
     </script>
 </body>
 </html>
