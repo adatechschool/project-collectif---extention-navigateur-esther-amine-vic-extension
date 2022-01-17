@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
       /*   #popupcontent{
  position: absolute;
@@ -22,6 +23,7 @@
     <title>Document</title>
 </head>
 <body>
+
     <div id="popupcontent">This is a popup window!</div>
     <p id="paragraph">
         Ce qu'il faut surtout retenir, c'est qu'entre le désert et l'oasis apparaît assez fréquemment un type intermédiaire, la steppe. Steppe à peu près permanente, quand elle doit son existence à la présence d'une nappe souterraine; steppe fort intermittente, quand elle dépend des pluies d'orage; dans tous lors cas, région de floraison soudaine, peuplée de plantes xérophytes : graminées courtes, dures touffes de drinn, buissons épineux de retem et d'acacia gommier, que le retour de la sécheresse semble plonger dans le néant, mais qui sont douées d'une étonnante vitalité et qui parviennent à sauver, à travers les longues épreuves de sécheresse, leurs racines ou leurs graines.
@@ -63,8 +65,11 @@ for (anim of animals) {
 
 
 function showPopup(element) { 
-    var popup = document.createElement("div")
+   var popup = document.createElement("div")
+   var gif = getGif
+ // var gif = document.createElement("img")
     element.appendChild(popup)
+    popup.appendChild(gif)
     element.style.position = "relative"
     popup.style.position = "absolute"
     popup.style.top = "5px"
@@ -72,7 +77,40 @@ function showPopup(element) {
     popup.style.height = "200px"
     popup.style.width = "200px"
     popup.style.border = "2px solid black"
+   /*gif.id = element.innerHTML + element.id
+    popup.appendChild(gif)
+    console.log(gif.id)*/
+    console.log(gif.id)
+ 
 
+}
+
+
+function getGif() {
+ 
+   // var searchterm = "dog";
+
+    var gifurl = "https://api.giphy.com/v1/gifs/search?api_key=lNEB9ueK0HjLAyPTh0pTfO6hAfRb09Sx&q=" + searchterm + "&limit=1&offset=0&rating=g&lang=en"
+ 
+    $.get(gifurl, callBackGetSuccess).done(function() {
+        //alert( "second success" );
+      })
+      .fail(function() {
+        alert( "error" );
+      })
+      .always(function() {
+        //alert( "finished" );
+      });
+   
+}
+
+var callBackGetSuccess = function(d) {
+    console.log("donnees api", d)
+    //alert("Meteo temp  : "  + data.main.temp);
+   var img = document.getElementById("gif");
+   console.log("sub", d.data[0])
+    console.log("sub", d.data[0])
+    img.src = d.data[0].img.original.url;
 }
    
 /* 
