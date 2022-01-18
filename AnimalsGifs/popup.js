@@ -126,13 +126,15 @@ function main() {
   function getGif(searchterm) {
     var gifurl = "https://api.giphy.com/v1/gifs/search?api_key=lNEB9ueK0HjLAyPTh0pTfO6hAfRb09Sx&q=" + searchterm + "&limit=1&offset=0&rating=g&lang=en";
     // essayer avec axios
-    fetch(gifurl).then((response) => {
+    fetch(gifurl).then(function(result) {
+      return result.json();
+    }).then(function(response) {
       callBackGetSuccess(response)
     });
   }
 
   var callBackGetSuccess = function(d) {
-    console.log("donnees api", d);
+    console.log(d);
     myGif.src = d.data[0].images.fixed_height_small.url;
   };
 }
