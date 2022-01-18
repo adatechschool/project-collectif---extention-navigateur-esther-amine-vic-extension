@@ -63,25 +63,22 @@ for (anim of animals) {
     i++;
 }
 
-var urlGif = ""
+var myGif
 
 function showPopup(element) { 
-   var popup = document.createElement("div")
-   var gif = document.createElement("img")
-   gif.id = element.innerText + element.id
-    element.appendChild(popup)
-    popup.appendChild(gif)
-    element.style.position = "relative"
-    popup.style.position = "absolute"
-    popup.style.top = "5px"
-    popup.style.left = "5px"
-    popup.style.height = "200px"
-    popup.style.width = "200px"
-    popup.style.border = "2px solid black"
+/*    var popup = document.createElement("div")
+ */   
+  var gif = document.createElement("img")
+  gif.id = element.innerText + element.id
+    element.appendChild(gif)
+/*     popup.appendChild(gif)
+ */ element.style.position = "relative"
+    gif.style.position = "absolute"
+    gif.style.top = "5px"
+    gif.style.left = "5px" 
     console.log(gif.id)
+    myGif = gif
     getGif()
-    console.log(urlGif)
-    gif.src = urlGif
 }
 
 
@@ -99,15 +96,12 @@ function getGif() {
       })
       .always(function() {
         //alert( "finished" );
-      });
-   
+      }); 
 }
 
 var callBackGetSuccess = function(d) {
-    console.log("donnees api", d)
-    //alert("Meteo temp  : "  + data.main.temp);
-   //var img = document.getElementById("gif");
-   urlGif = d.data[0].images.original.url;
+   console.log("donnees api", d)
+   myGif.src = d.data[0].images.fixed_height_small.url;
 }
    
 /* 
