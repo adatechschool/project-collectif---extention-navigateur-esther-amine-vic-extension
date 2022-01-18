@@ -40,4 +40,6 @@ demain : c'est vendrediiiii
 17/01/2022
 -Hard stuck on gif add-on : On arrive pas a fairee remonter l'id de la gif dans la fonction popup
 -la nuit portee conseil
-demain
+
+17/01/2022
+on s'approche petit a petit du resultat final, Aujourd'hui debug de la situation d'hier plus ajout des features a l'extension.
