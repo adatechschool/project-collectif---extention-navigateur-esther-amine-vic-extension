@@ -10,30 +10,129 @@ button.addEventListener("click", async () => {
   });
 });
 
-
 function main() {
- var liste = ["Ant","Antelope","Baboon","Bat","Beagle","Bear","Bird","Butterfly","Cat","Caterpillar","Chicken","Cow","Dog","Dolphin","Donkey","Eagle","Fish","Fly","Fox","Frog","Gerbil","Goose","Gopher","Gorilla","Heron","Honey Bee","Horn Shark","Horse","Ibis","Iguana","Impala","Jackal","Jaguar","Javanese","Jellyfish","Kakapo","Kangaroo","King Penguin","Kiwi","Koala","Lemming","Lemur","Leopard","Saola","Scorpion","Snake","Swan","Tuatara","Turkey","Zebra",""] 
-  console.log("début")
+  var liste = [
+    "Ant",
+    "Antelope",
+    "Baboon",
+    "Bat",
+    "Beagle",
+    "Bear",
+    "Bird",
+    "Butterfly",
+    "Cat",
+    "Caterpillar",
+    "Chicken",
+    "Cow",
+    "Dog",
+    "Dolphin",
+    "Donkey",
+    "Eagle",
+    "Elephant",
+    "Fish",
+    "Fly",
+    "Fox",
+    "Frog",
+    "Gerbil",
+    "Goose",
+    "Gopher",
+    "Gorilla",
+    "Heron",
+    "Honey Bee",
+    "Horn Shark",
+    "Horse",
+    "Ibis",
+    "Iguana",
+    "Impala",
+    "Jackal",
+    "Jaguar",
+    "Javanese",
+    "Jellyfish",
+    "Kakapo",
+    "Kangaroo",
+    "King Penguin",
+    "Kiwi",
+    "Koala",
+    "Lemming",
+    "Lemur",
+    "Leopard",
+    "Saola",
+    "Scorpion",
+    "Snake",
+    "Swan",
+    "Tuatara",
+    "Turkey",
+    "Zebra",
+  ];
+  console.log("début");
 
   // on boucle sur la liste pour highlight chaque mot trouve dans la page
   for (element of liste) {
     highlight(element);
   }
-  console.log("fini")
+  console.log("fini");
 
-  // permet de mettre en evidence les mots trouvés dans la page 
+  // permet de mettre en evidence les mots trouvés dans la page
   function highlight(search) {
     if (document.body.innerText.includes(search) === false) {
-      return 
+      return;
     }
     var paragraph = document.getElementsByTagName("p");
-    // on boucle sur tous les paragraphes de la page pour y chercher 
+    // on boucle sur tous les paragraphes de la page pour y chercher
     // le terme et le remplacer par lui-même entouré de balises <mark></mark>
     for (par of paragraph) {
-    /* search = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); //https://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+      /* search = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); //https://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
 
     var re = new RegExp(search, "g"); */
-    par.innerHTML = par.innerHTML.replace(search, `<mark class="animal">$&</mark>`);
+      par.innerHTML = par.innerHTML.replace(
+        search,
+        `<mark class="animal">$&</mark>`
+      );
     }
   }
+
+  // on boucle sur chaque mot surligné pour lui ajouter un ID et un event listener
+  var animals = document.getElementsByClassName("animal");
+  let i = 0;
+
+  for (anim of animals) {
+    anim.id = i.toString();
+    let currEl = document.getElementById(i.toString());
+    currEl.addEventListener(
+      "click",
+      () => {
+        showPopup(currEl);
+      },
+      false
+    );
+    i++;
+  }
+
+  var myGif;
+
+  function showPopup(element) {
+    var gif = document.createElement("img");
+    gif.id = element.innerText + element.id;
+    element.appendChild(gif);
+
+    element.style.position = "relative";
+    gif.style.position = "absolute";
+    gif.style.top = "15px";
+    gif.style.left = "5px";
+    myGif = gif;
+    getGif(element.innerText);
+  }
+
+  function getGif(searchterm) {
+    var gifurl = "https://api.giphy.com/v1/gifs/search?api_key=lNEB9ueK0HjLAyPTh0pTfO6hAfRb09Sx&q=" + searchterm + "&limit=1&offset=0&rating=g&lang=en";
+    // essayer avec axios
+    fetch(gifurl).then((response) => {
+      callBackGetSuccess(response)
+    });
+  }
+
+  var callBackGetSuccess = function(d) {
+    console.log("donnees api", d);
+    myGif.src = d.data[0].images.fixed_height_small.url;
+  };
 }
