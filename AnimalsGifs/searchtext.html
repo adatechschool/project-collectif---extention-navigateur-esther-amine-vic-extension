@@ -53,8 +53,12 @@ for (anim of animals) {
     i++;
 }
 
+// variable générale qui permettra de récupérer
+// l'emplacement du gif et de lui assigner une source
 var myGif
 
+// crée le gif en temps qu'enfant de l'élément cliqué
+// et le fait apparaitre comme un popup
 function showPopup(element) { 
 
   var gif = document.createElement("img")
@@ -70,10 +74,8 @@ function showPopup(element) {
     getGif(element.innerText)
 }
 
-
+// appelle l'API Giphy avec le terme recherché 
 function getGif(searchterm) {
- 
-  
 
     var gifurl = "https://api.giphy.com/v1/gifs/search?api_key=lNEB9ueK0HjLAyPTh0pTfO6hAfRb09Sx&q=" + searchterm + "&limit=1&offset=0&rating=g&lang=en"
  
@@ -88,11 +90,17 @@ function getGif(searchterm) {
       }); 
 }
 
+// donne l'url du gif comme src de l'image créée par showPopup 
 var callBackGetSuccess = function(d) {
    console.log("donnees api", d)
    myGif.src = d.data[0].images.fixed_height_small.url;
 }
-   
+
+// To-Do : 
+// empêcher nouveau popup de s'ouvrir si on a pas fermé le précédent 
+// remplacer onClick par onmouseover 
+// créer fonction pour fermer le popup quand le mouseover est terminé  
+
     </script>
 </body>
 </html>
