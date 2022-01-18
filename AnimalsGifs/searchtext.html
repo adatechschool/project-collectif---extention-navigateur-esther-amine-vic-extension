@@ -6,16 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
-      /*   #popupcontent{
- position: absolute;
- visibility: hidden;
- overflow: hidden;
- border:1px solid #CCC;
- background-color:#F9F9F9;
- border:1px solid #333;
- padding:5px;
- 
-} */
 
 
       </style>
@@ -66,25 +56,24 @@ for (anim of animals) {
 var myGif
 
 function showPopup(element) { 
-/*    var popup = document.createElement("div")
- */   
+
   var gif = document.createElement("img")
   gif.id = element.innerText + element.id
     element.appendChild(gif)
-/*     popup.appendChild(gif)
- */ element.style.position = "relative"
+
+  element.style.position = "relative"
     gif.style.position = "absolute"
     gif.style.top = "5px"
     gif.style.left = "5px" 
     console.log(gif.id)
     myGif = gif
-    getGif()
+    getGif(element.innerText)
 }
 
 
-function getGif() {
+function getGif(searchterm) {
  
-   var searchterm = "dog";
+  
 
     var gifurl = "https://api.giphy.com/v1/gifs/search?api_key=lNEB9ueK0HjLAyPTh0pTfO6hAfRb09Sx&q=" + searchterm + "&limit=1&offset=0&rating=g&lang=en"
  
@@ -104,44 +93,6 @@ var callBackGetSuccess = function(d) {
    myGif.src = d.data[0].images.fixed_height_small.url;
 }
    
-/* 
-function transformText(text) {
-    text.innerHTML = "PLOUF"
-} */
-
- /* var popUp = document.getElementById("popupcontent");
-       popUp.style.top = "30%";
-       popUp.style.left = "50%";
-        popUp.style.width = w + "px";
-       popUp.style.height = h + "px"; 
-       
- if (baseText == null) baseText = popUp.innerHTML;
-   popUp.innerHTML = baseText + 
-      "<div id=\"statusbar\"><button onclick=\"hidePopup();\">Close window<button></div>";
- 
- var baseText = null;
- 
- function showPopup(w,h){
-   var popUp = document.getElementById("popupcontent");
- 
-   popUp.style.top = "200px";
-   popUp.style.left = "200px";
-   popUp.style.width = w + "px";
-   popUp.style.height = h + "px";
- 
-  if (baseText == null) baseText = popUp.innerHTML;
-   popUp.innerHTML = baseText + 
-      "<div id=\"statusbar\"><button onclick=\"hidePopup();\">Close window<button></div>";
- 
-  var sbar = document.getElementById("statusbar");
-   sbar.style.marginTop = (parseInt(h)-40) + "px";
-   popUp.style.visibility = "visible";
-}
-function hidePopup(){
-   var popUp = document.getElementById("popupcontent");
-   popUp.style.visibility = "hidden";
-}
-<a href="#" onclick="showPopup(300,200);" >Open popup</a>  */
     </script>
 </body>
 </html>
