@@ -63,6 +63,7 @@ for (anim of animals) {
     i++;
 }
 
+var urlGif = ""
 
 function showPopup(element) { 
    var popup = document.createElement("div")
@@ -77,17 +78,14 @@ function showPopup(element) {
     popup.style.height = "200px"
     popup.style.width = "200px"
     popup.style.border = "2px solid black"
-   /*gif.id = element.innerHTML + element.id
-    popup.appendChild(gif)
-    console.log(gif.id)*/
     console.log(gif.id)
-     getGif(gif.id)
- 
-
+    getGif()
+    console.log(urlGif)
+    gif.src = urlGif
 }
 
 
-function getGif(index) {
+function getGif() {
  
    var searchterm = "dog";
 
@@ -109,9 +107,7 @@ var callBackGetSuccess = function(d) {
     console.log("donnees api", d)
     //alert("Meteo temp  : "  + data.main.temp);
    //var img = document.getElementById("gif");
-   console.log("sub", d.data[0])
-    console.log("sub", d.data[0])
-   return d.data[0].img.original.url;
+   urlGif = d.data[0].images.original.url;
 }
    
 /* 
