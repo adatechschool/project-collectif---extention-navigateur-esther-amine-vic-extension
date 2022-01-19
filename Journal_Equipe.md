@@ -43,3 +43,9 @@ demain : c'est vendrediiiii
 
 17/01/2022
 on s'approche petit a petit du resultat final, Aujourd'hui debug de la situation d'hier plus ajout des features a l'extension.
+
+17/01/2022
+AMINE A Ajouté une mega OP feature au projet c'est un Genie vrmt
+Victoire et Esther on aussi ajouté un bouton (x) pour fermer les gifs
+Le projet est tiptop
+gg wp all it was ez after all you guys rock my word love youuuuu <3
