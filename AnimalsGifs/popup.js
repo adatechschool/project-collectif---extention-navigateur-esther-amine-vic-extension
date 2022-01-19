@@ -65,7 +65,9 @@ function main() {
     "Zebra",
   ];
   console.log("début");
-
+  alert(liste.toString());
+  var newPush = prompt("Please put a new word");
+  liste.push(newPush)
   // on boucle sur la liste pour highlight chaque mot trouve dans la page
   for (element of liste) {
     highlight(element);
