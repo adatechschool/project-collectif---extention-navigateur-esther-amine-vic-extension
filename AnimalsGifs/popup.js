@@ -124,7 +124,6 @@ function main() {
     close.style.textAlign = "center";
     close.style.top = "15px";
     close.style.left = "5px";
-    close.style.width = "10px";
     close.style.height = "auto";
     close.style.border = "solid 1px white"
     close.style.backgroundColor = "red"
