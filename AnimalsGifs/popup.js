@@ -100,10 +100,9 @@ function main() {
     let currEl = document.getElementById(i.toString());
     currEl.addEventListener(
       "click",
-      () => {
+      e => { e.stopImmediatePropagation();
         showPopup(currEl);
-      },
-      false
+      }
     );
     i++;
   }
@@ -112,15 +111,31 @@ function main() {
 
   function showPopup(element) {
     var gif = document.createElement("img");
+    var close = document.createElement("button")
     gif.id = element.innerText + element.id;
     element.appendChild(gif);
-
+    element.appendChild(close);
     element.style.position = "relative";
     gif.style.position = "absolute";
     gif.style.top = "15px";
     gif.style.left = "5px";
+    close.innerText = "X"
+    close.style.position = "absolute";
+    close.style.textAlign = "center";
+    close.style.top = "15px";
+    close.style.left = "5px";
+    close.style.width = "10px";
+    close.style.height = "auto";
+    close.style.border = "solid 1px white"
+    close.style.backgroundColor = "red"
+    close.style.color = "white"
     myGif = gif;
     getGif(element.innerText);
+    close.addEventListener("click", e => { e.stopImmediatePropagation();
+      console.log("closing")
+      element.removeChild(myGif)
+      element.removeChild(close)
+    })
   }
 
   function getGif(searchterm) {
