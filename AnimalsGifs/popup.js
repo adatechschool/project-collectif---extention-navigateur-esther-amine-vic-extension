@@ -1,88 +1,80 @@
 // event listener pour activer l'extension quand on clique sur le bouton
 let button = document.getElementById("HighlightAnimals");
-let button2 = document.getElementById("ListButton");
-
-var liste = [
-  "Ant",
-  "Antelope",
-  "Baboon",
-  "Bat",
-  "Beagle",
-  "Bear",
-  "Bird",
-  "Butterfly",
-  "Cat",
-  "Caterpillar",
-  "Chicken",
-  "Cow",
-  "Dog",
-  "Dolphin",
-  "Donkey",
-  "Eagle",
-  "Elephant",
-  "Fish",
-  "Fly",
-  "Fox",
-  "Frog",
-  "Gerbil",
-  "Goose",
-  "Gopher",
-  "Gorilla",
-  "Heron",
-  "Honey Bee",
-  "Horn Shark",
-  "Horse",
-  "Ibis",
-  "Iguana",
-  "Impala",
-  "Jackal",
-  "Jaguar",
-  "Javanese",
-  "Jellyfish",
-  "Kakapo",
-  "Kangaroo",
-  "King Penguin",
-  "Kiwi",
-  "Koala",
-  "Lemming",
-  "Lemur",
-  "Leopard",
-  "Saola",
-  "Scorpion",
-  "Snake",
-  "Swan",
-  "Tuatara",
-  "Turkey",
-  "Zebra",
-];
 
 button.addEventListener("click", async () => {
   let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
   chrome.scripting.executeScript({
     target: { tabId: tab.id },
-    function: main(liste),
+    function: main,
   });
 });
 
-button2.addEventListener("click", async () => {
-  let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    function: addWords(liste),
-  });
-});
-
-function addWords(liste) {
-  alert("Votre liste" + liste.toString());
-  var newPush = prompt("Please put a new word");
-  liste.push(newPush)
-}
-
-function main(liste) {
+function main() {
+  var liste = [
+    "Ant",
+    "Antelope",
+    "Baboon",
+    "Bat",
+    "Beagle",
+    "Bear",
+    "Bird",
+    "Butterfly",
+    "Cat",
+    "Caterpillar",
+    "Chicken",
+    "Cow",
+    "Dog",
+    "Dolphin",
+    "Donkey",
+    "Eagle",
+    "Elephant",
+    "Fish",
+    "Fly",
+    "Fox",
+    "Frog",
+    "Gerbil",
+    "Goose",
+    "Gopher",
+    "Gorilla",
+    "Heron",
+    "Honey Bee",
+    "Horn Shark",
+    "Horse",
+    "Ibis",
+    "Iguana",
+    "Impala",
+    "Jackal",
+    "Jaguar",
+    "Javanese",
+    "Jellyfish",
+    "Kakapo",
+    "Kangaroo",
+    "King Penguin",
+    "Kiwi",
+    "Koala",
+    "Lemming",
+    "Lemur",
+    "Leopard",
+    "Saola",
+    "Scorpion",
+    "Snake",
+    "Swan",
+    "Tuatara",
+    "Turkey",
+    "Zebra",
+  ];
   console.log("début");
-  alert(liste.toString());
+  alert("I will show you gifs of those animals: " + liste.toString());
+  var newPush = prompt("You can add some words, separated by a space: ");
+  if (newPush.includes(" ")) {
+    newPush = newPush.split(' ')
+    liste = liste.concat(newPush)
+  }
+  else {
+    liste.push(newPush)
+  }
+  alert("Your new list: " + liste)
   // on boucle sur la liste pour highlight chaque mot trouve dans la page
   for (element of liste) {
     highlight(element);
@@ -98,7 +90,7 @@ function main(liste) {
     // on boucle sur tous les paragraphes de la page pour y chercher
     // le terme et le remplacer par lui-même entouré de balises <mark></mark>
     for (par of paragraph) {
- /*    search = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); //https://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+      /* search = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); //https://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
 
     var re = new RegExp(search, "g"); */
       par.innerHTML = par.innerHTML.replace(
