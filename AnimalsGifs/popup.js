@@ -122,13 +122,14 @@ function main() {
     var gif = document.createElement("img");
     var close = document.createElement("button")
     gif.id = element.innerText + element.id;
+    close.id = element.innerText + "close" + element.id;
     element.appendChild(gif);
     element.appendChild(close);
     element.style.position = "relative";
     gif.style.position = "absolute";
     gif.style.top = "15px";
     gif.style.left = "5px";
-    close.innerText = "X"
+    close.innerText = "X";
     close.style.position = "absolute";
     close.style.textAlign = "center";
     close.style.top = "15px";
@@ -139,10 +140,11 @@ function main() {
     close.style.color = "white"
     myGif = gif;
     getGif(element.innerText);
-    close.addEventListener("click", e => { e.stopImmediatePropagation();
+    let currClose = document.getElementById(close.id)
+    currClose.addEventListener("click", e => { e.stopImmediatePropagation();
       console.log("closing")
-      element.removeChild(myGif)
-      element.removeChild(close)
+      element.removeChild(gif)
+      element.removeChild(currClose)
     })
   }
 
